@@ -12,8 +12,8 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     env:
-       working-directory: '/home/runner/work/perceptrons-poc/perceptrons-poc'
-       java_working_directory: '/home/runner/work/perceptrons-poc/perceptrons-poc/mvn/jms-eventHub-poc'
+       working-directory: '/home/runner/work/mlopssb/mlopssb'
+       java_working_directory: '/home/runner/work/mlopssb/mlopssb/mvn/jms-eventHub-poc'
 
     steps:
     - uses: actions/checkout@master
