@@ -1,0 +1,36 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy JAR app to Azure Web App - app-jmstoeventhub
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+       working-directory: '/home/runner/work/perceptrons-poc/perceptrons-poc'
+       java_working_directory: '/home/runner/work/perceptrons-poc/perceptrons-poc/mvn/jms-eventHub-poc'
+
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Set up Java version
+      uses: actions/setup-java@v1
+      with:
+        java-version: '8'
+
+    - name: Build with Maven
+      working-directory: ${{ env.java_working_directory }}
+      run: echo $GITHUB_WORKSPACE/mvn/jms-eventHub-poc && pwd && mvn clean install
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'app-evh-jms'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_8a6fdc1e6b75448f9bd00073ca202908 }}
+        package: '${{ github.workspace }}/target/*.jar'
