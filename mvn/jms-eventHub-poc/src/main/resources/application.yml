@@ -1,0 +1,17 @@
+eventHub: 
+  inbound: 
+    connectionString: "Endpoint=sb://evhpkgdly.servicebus.windows.net/;SharedAccessKeyName=pol-outbound-pkg-dly;SharedAccessKey=BWY1onz0yOz4UKD/mJtXEG0gmfLX56Hc+pqjWa3Cb6Y=;EntityPath=evh-outbound-pkg-dly"
+    name: "evh-outbound-pkg-dly"
+  outbound: 
+    connectionString: "Endpoint=sb://evhpkgdly.servicebus.windows.net/;SharedAccessKeyName=pol-outbound-pkg-dly;SharedAccessKey=BWY1onz0yOz4UKD/mJtXEG0gmfLX56Hc+pqjWa3Cb6Y=;EntityPath=evh-outbound-pkg-dly"
+    name: "evh-outbound-pkg-dly"
+  storage: 
+    consumerGroupName: $Default
+    storageConnectionString: "DefaultEndpointsProtocol=https;AccountName=sapocevh;AccountKey=/0NjGfNv1wZPrEzDIWn6TO6Bf7tOdQLWp0FES4SWmOefqmYqUxq9+Ut2gMQHnuZgM2SlhylbiIgg1EjUKqNsWg==;EndpointSuffix=core.windows.net"
+    storageContainerName: "evhjms"
+logging: 
+  level: 
+    com.microsoft.azure.*: ERROR
+    com.azure.*: ERROR
+server:
+  port : 9001
